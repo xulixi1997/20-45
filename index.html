@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>吉林省大塘网络科技有限公司 | 专业网络运营与运维解决方案</title>
+    <meta name="description" content="吉林省大塘网络科技有限公司提供专业的网络运营、服务器运维、网络安全及IT基础设施解决方案。位于长春市高新开发区，致力于为企业提供稳定的网络动力。">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans SC"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0B1120', // 深邃蓝黑
+                            primary: '#0F172A', // 主要背景色
+                            accent: '#06B6D4', // 科技青
+                            highlight: '#F97316', // 活力橙
+                        }
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "url('https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0F172A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #06B6D4;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #F97316;
+        }
+        
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            will-change: opacity, visibility;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-300 bg-brand-primary overflow-x-hidden">
+
+    <!-- 1. 顶部导航栏 (Navbar) -->
+    <header class="fixed w-full top-0 z-50 glass-nav border-b border-gray-800 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 bg-brand-accent rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-cyan-500/50 group-hover:scale-110 transition-transform">
+                    D
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-white font-bold text-lg leading-tight tracking-wider">大塘科技</span>
+                    <span class="text-gray-400 text-xs font-light tracking-widest">DATANG NETWORK</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="text-sm font-medium hover:text-brand-accent transition-colors">首页</a>
+                <a href="#services" class="text-sm font-medium hover:text-brand-accent transition-colors">核心服务</a>
+                <a href="#solutions" class="text-sm font-medium hover:text-brand-accent transition-colors">解决方案</a>
+                <a href="#about" class="text-sm font-medium hover:text-brand-accent transition-colors">关于我们</a>
+                <a href="#contact" class="px-5 py-2.5 bg-brand-accent text-brand-dark font-bold rounded-full hover:bg-white hover:shadow-[0_0_20px_rgba(6,182,212,0.6)] transition-all transform hover:-translate-y-0.5">
+                    立即咨询
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-2xl text-white focus:outline-none" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-dark border-t border-gray-800 p-6 absolute w-full">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="text-gray-300 hover:text-brand-accent">首页</a>
+                <a href="#services" class="text-gray-300 hover:text-brand-accent">核心服务</a>
+                <a href="#about" class="text-gray-300 hover:text-brand-accent">关于我们</a>
+                <a href="#contact" class="text-brand-accent font-bold">联系我们</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Hero Section (首屏) -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Background Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="Server Room" class="w-full h-full object-cover opacity-30">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-primary via-brand-primary/80 to-transparent"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center">
+            <div class="text-left fade-in-section">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/30 text-brand-accent text-sm mb-6">
+                    <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
+                    <span>吉林省领先的网络运维专家</span>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-black text-white leading-tight mb-6">
+                    构建数字时代的 <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-blue-500">坚实脉络</span>
+                </h1>
+                <p class="text-gray-400 text-lg mb-8 leading-relaxed max-w-lg">
+                    大塘网络科技专注于企业级网络运营与IT基础设施维护。我们位于长春高新区，以专业的技术力量，确保您的业务在数字世界中全天候稳定运行。
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" class="px-8 py-4 bg-brand-accent text-brand-dark font-bold rounded-lg hover:bg-white transition-all shadow-lg shadow-cyan-500/20">
+                        定制运维方案
+                    </a>
+                    <a href="#services" class="px-8 py-4 border border-gray-600 text-white font-medium rounded-lg hover:border-brand-accent hover:text-brand-accent transition-all">
+                        查看服务目录
+                    </a>
+                </div>
+            </div>
+            <!-- Hero Illustration/Image -->
+            <div class="hidden md:block relative fade-in-section delay-200">
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-700 group">
+                    <img src="https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Cloud Tech" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-brand-accent/20 to-transparent pointer-events-none"></div>
+                </div>
+                <!-- Floating Card -->
+                <div class="absolute -bottom-10 -left-10 bg-brand-dark/90 backdrop-blur border border-gray-700 p-6 rounded-xl shadow-xl animate-bounce" style="animation-duration: 3s;">
+                    <div class="flex items-center gap-4">
+                        <div class="text-green-400 text-3xl"><i class="fas fa-shield-alt"></i></div>
+                        <div>
+                            <p class="text-gray-400 text-xs">系统安全状态</p>
+                            <p class="text-white font-bold">100% 运行中</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 数据统计模块 (Stats) -->
+    <section class="py-10 border-y border-gray-800 bg-brand-dark/50">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-gray-800">
+                <div>
+                    <div class="text-4xl font-bold text-white mb-1 counter" data-target="99">0</div>
+                    <div class="text-sm text-brand-accent">% 服务在线率</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-white mb-1 counter" data-target="500">0</div>
+                    <div class="text-sm text-brand-accent">+ 服务企业客户</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-white mb-1 counter" data-target="24">0</div>
+                    <div class="text-sm text-brand-accent">小时 极速响应</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-white mb-1 counter" data-target="10">0</div>
+                    <div class="text-sm text-brand-accent">年 行业经验沉淀</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 关于我们 (About Us) -->
+    <section id="about" class="py-24 relative">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="w-full md:w-1/2 relative fade-in-section">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=600" class="rounded-2xl shadow-lg mt-8" alt="Team meeting">
+                        <img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=600" class="rounded-2xl shadow-lg" alt="Coding">
+                    </div>
+                    <div class="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-brand-accent/5 rounded-full blur-3xl"></div>
+                </div>
+                <div class="w-full md:w-1/2 fade-in-section">
+                    <h2 class="text-brand-accent font-bold tracking-wider mb-2 uppercase text-sm">关于吉林大塘</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-white mb-6">扎根长春，服务全国的<br>网络技术护航者</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        吉林省大塘网络科技有限公司成立于长春市高新开发区，是一家专注于企业IT全生命周期管理的科技公司。我们不仅仅是技术的提供者，更是您业务连续性的守护者。
+                    </p>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        从基础的网络架构搭建到复杂的服务器集群运维，从数据中心管理到企业级网络安全防御，大塘科技凭借在宜家7080小区的技术研发中心，为数百家企业提供了高效、稳定的数字化底座。
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <i class="fas fa-check-circle text-brand-highlight"></i> 本地化快速响应团队
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <i class="fas fa-check-circle text-brand-highlight"></i> 资深网络架构师一对一服务
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <i class="fas fa-check-circle text-brand-highlight"></i> 7x24小时全天候监控中心
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 核心价值观 (Philosophy) -->
+    <section class="py-20 bg-brand-dark">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in-section">
+                <h2 class="text-3xl font-bold text-white">我们的核心理念</h2>
+                <div class="w-20 h-1 bg-brand-accent mx-auto mt-4 rounded-full"></div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-brand-primary p-8 rounded-2xl border border-gray-800 hover:border-brand-accent transition-all group fade-in-section">
+                    <div class="w-14 h-14 bg-blue-900/50 rounded-lg flex items-center justify-center text-blue-400 text-2xl mb-6 group-hover:bg-brand-accent group-hover:text-white transition-colors">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-4">稳定性 First</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        网络是企业的神经系统。我们通过冗余设计和主动监控，确保您的业务永不断线，稳定如磐石。
+                    </p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-brand-primary p-8 rounded-2xl border border-gray-800 hover:border-brand-accent transition-all group fade-in-section delay-100">
+                    <div class="w-14 h-14 bg-purple-900/50 rounded-lg flex items-center justify-center text-purple-400 text-2xl mb-6 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-4">极速响应 Speed</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        时间就是金钱。针对突发网络故障，我们承诺15分钟内介入，最大程度减少停机损失。
+                    </p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-brand-primary p-8 rounded-2xl border border-gray-800 hover:border-brand-accent transition-all group fade-in-section delay-200">
+                    <div class="w-14 h-14 bg-orange-900/50 rounded-lg flex items-center justify-center text-orange-400 text-2xl mb-6 group-hover:bg-brand-highlight group-hover:text-white transition-colors">
+                        <i class="fas fa-shield-virus"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-4">安全性 Secure</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        数据无价。我们构建多层级防火墙与数据备份机制，为您的核心资产穿上防弹衣。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. 核心服务总览 (Services Matrix) -->
+    <section id="services" class="py-24 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-brand-dark to-transparent opacity-50"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="mb-16 fade-in-section">
+                <h2 class="text-4xl font-bold text-white mb-4">全栈式 IT 服务矩阵</h2>
+                <p class="text-gray-400 max-w-2xl">针对不同规模企业的差异化需求，我们提供模块化、可定制的技术服务。</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Service 1 -->
+                <div class="p-6 rounded-xl bg-gradient-to-b from-gray-800 to-gray-900 border border-gray-700 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-all fade-in-section">
+                    <i class="fas fa-network-wired text-4xl text-brand-accent mb-6"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">企业网络架构</h3>
+                    <p class="text-gray-400 text-sm mb-4">局域网规划、综合布线、无线覆盖优化、VPN专线搭建。</p>
+                    <a href="#contact" class="text-brand-accent text-sm font-semibold hover:underline">了解详情 <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                <!-- Service 2 -->
+                <div class="p-6 rounded-xl bg-gradient-to-b from-gray-800 to-gray-900 border border-gray-700 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-all fade-in-section">
+                    <i class="fas fa-server text-4xl text-blue-400 mb-6"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">服务器运维托管</h3>
+                    <p class="text-gray-400 text-sm mb-4">Linux/Windows服务器配置、负载均衡、故障排查、环境部署。</p>
+                    <a href="#contact" class="text-blue-400 text-sm font-semibold hover:underline">了解详情 <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                <!-- Service 3 -->
+                <div class="p-6 rounded-xl bg-gradient-to-b from-gray-800 to-gray-900 border border-gray-700 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-all fade-in-section">
+                    <i class="fas fa-lock text-4xl text-red-400 mb-6"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">网络安全防御</h3>
+                    <p class="text-gray-400 text-sm mb-4">防火墙策略配置、漏洞扫描、入侵检测、勒索病毒防御。</p>
+                    <a href="#contact" class="text-red-400 text-sm font-semibold hover:underline">了解详情 <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                <!-- Service 4 -->
+                <div class="p-6 rounded-xl bg-gradient-to-b from-gray-800 to-gray-900 border border-gray-700 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-all fade-in-section">
+                    <i class="fas fa-database text-4xl text-yellow-400 mb-6"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">数据灾备与恢复</h3>
+                    <p class="text-gray-400 text-sm mb-4">异地备份策略、数据库热备、误删数据恢复、存储扩容。</p>
+                    <a href="#contact" class="text-yellow-400 text-sm font-semibold hover:underline">了解详情 <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                <!-- Service 5 -->
+                <div class="p-6 rounded-xl bg-gradient-to-b from-gray-800 to-gray-900 border border-gray-700 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-all fade-in-section">
+                    <i class="fas fa-laptop-code text-4xl text-purple-400 mb-6"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">IT 桌面支持</h3>
+                    <p class="text-gray-400 text-sm mb-4">办公设备维护、软件安装调试、打印机共享、员工IT培训。</p>
+                    <a href="#contact" class="text-purple-400 text-sm font-semibold hover:underline">了解详情 <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                <!-- Service 6 -->
+                <div class="p-6 rounded-xl bg-gradient-to-b from-gray-800 to-gray-900 border border-gray-700 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-all fade-in-section">
+                    <i class="fas fa-cloud text-4xl text-sky-300 mb-6"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">云平台管理</h3>
+                    <p class="text-gray-400 text-sm mb-4">阿里云/腾讯云架构咨询、云资源优化、混合云搭建。</p>
+                    <a href="#contact" class="text-sky-300 text-sm font-semibold hover:underline">了解详情 <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7, 8, 9. 深度服务展示区 (Detailed Focus) -->
+    <!-- Detail 1: 运维 -->
+    <section class="py-20 bg-brand-dark border-t border-gray-800">
+        <div class="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center gap-12">
+            <div class="w-full md:w-1/2 fade-in-section">
+                <h3 class="text-3xl font-bold text-white mb-6">主动式运维监控系统</h3>
+                <p class="text-gray-400 mb-6">
+                    告别“救火式”运维。大塘科技采用先进的Zabbix/Prometheus监控集群，实时捕捉服务器CPU、内存、IO及网络流量异常。
+                </p>
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="bg-gray-800 p-4 rounded text-center border border-gray-700">
+                        <span class="block text-2xl font-bold text-brand-accent">秒级</span>
+                        <span class="text-xs text-gray-500">故障告警</span>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded text-center border border-gray-700">
+                        <span class="block text-2xl font-bold text-brand-accent">100%</span>
+                        <span class="text-xs text-gray-500">日志留存</span>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 fade-in-section">
+                <img src="https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Monitoring" class="rounded-xl shadow-2xl border border-gray-700">
+            </div>
+        </div>
+    </section>
+
+    <!-- Detail 2: 硬件与布线 -->
+    <section class="py-20">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+            <div class="w-full md:w-1/2 fade-in-section">
+                <img src="https://images.pexels.com/photos/442150/pexels-photo-442150.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Hardware" class="rounded-xl shadow-2xl border border-gray-700">
+            </div>
+            <div class="w-full md:w-1/2 fade-in-section">
+                <h3 class="text-3xl font-bold text-white mb-6">标准化机房与综合布线</h3>
+                <p class="text-gray-400 mb-6">
+                    物理层是网络的基石。我们提供符合国际标准的机房建设与理线服务。从静电地板铺设到精密空调调试，从光纤熔接到机柜整理，确保您的核心设备运行在最佳环境。
+                </p>
+                <ul class="text-gray-400 space-y-2">
+                    <li><i class="fas fa-check text-brand-accent mr-2"></i> 结构化布线系统设计</li>
+                    <li><i class="fas fa-check text-brand-accent mr-2"></i> UPS不间断电源保障</li>
+                    <li><i class="fas fa-check text-brand-accent mr-2"></i> 智能环境温湿度监控</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detail 3: 驻场服务 -->
+    <section class="py-20 bg-brand-dark border-y border-gray-800">
+        <div class="container mx-auto px-6 text-center fade-in-section">
+            <h3 class="text-3xl font-bold text-white mb-4">企业IT驻场外包</h3>
+            <p class="text-gray-400 max-w-3xl mx-auto mb-10">
+                降低人力成本，提升专业度。大塘科技为您提供经过严格培训的IT工程师驻场服务，像您的内部员工一样工作，但拥有更强大的后台技术库支持。
+            </p>
+            <div class="flex justify-center gap-6 flex-wrap">
+                <div class="bg-gray-800 px-6 py-3 rounded-full border border-gray-600 text-gray-300">
+                    <i class="fas fa-user-tie text-brand-accent mr-2"></i> 定期巡检
+                </div>
+                <div class="bg-gray-800 px-6 py-3 rounded-full border border-gray-600 text-gray-300">
+                    <i class="fas fa-building text-brand-accent mr-2"></i> 全职驻场
+                </div>
+                <div class="bg-gray-800 px-6 py-3 rounded-full border border-gray-600 text-gray-300">
+                    <i class="fas fa-phone-volume text-brand-accent mr-2"></i> 远程支持
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. 服务流程 (Process) -->
+    <section class="py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in-section">
+                <h2 class="text-3xl font-bold text-white">标准化服务流程</h2>
+                <p class="text-gray-400 mt-2">Professional Workflow</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <!-- Step 1 -->
+                <div class="relative p-6 border border-gray-800 rounded-xl bg-brand-dark hover:border-brand-accent transition-colors fade-in-section">
+                    <div class="absolute -top-4 -left-4 w-10 h-10 bg-brand-accent text-brand-dark font-bold flex items-center justify-center rounded-full">1</div>
+                    <h4 class="text-lg font-bold text-white mt-2 mb-2">需求调研</h4>
+                    <p class="text-gray-500 text-sm">上门勘测网络环境，分析痛点与业务需求。</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="relative p-6 border border-gray-800 rounded-xl bg-brand-dark hover:border-brand-accent transition-colors fade-in-section delay-100">
+                    <div class="absolute -top-4 -left-4 w-10 h-10 bg-brand-accent text-brand-dark font-bold flex items-center justify-center rounded-full">2</div>
+                    <h4 class="text-lg font-bold text-white mt-2 mb-2">方案定制</h4>
+                    <p class="text-gray-500 text-sm">输出拓扑图、设备清单及运维SLA服务标准。</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="relative p-6 border border-gray-800 rounded-xl bg-brand-dark hover:border-brand-accent transition-colors fade-in-section delay-200">
+                    <div class="absolute -top-4 -left-4 w-10 h-10 bg-brand-accent text-brand-dark font-bold flex items-center justify-center rounded-full">3</div>
+                    <h4 class="text-lg font-bold text-white mt-2 mb-2">部署实施</h4>
+                    <p class="text-gray-500 text-sm">专业工程师进场配置，割接上线，确保无缝切换。</p>
+                </div>
+                <!-- Step 4 -->
+                <div class="relative p-6 border border-gray-800 rounded-xl bg-brand-dark hover:border-brand-accent transition-colors fade-in-section delay-300">
+                    <div class="absolute -top-4 -left-4 w-10 h-10 bg-brand-highlight text-white font-bold flex items-center justify-center rounded-full">4</div>
+                    <h4 class="text-lg font-bold text-white mt-2 mb-2">长期维保</h4>
+                    <p class="text-gray-500 text-sm">定期巡检报告，7x24小时故障响应支持。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. 技术栈展示 (Tech Stack) -->
+    <section class="py-16 bg-gray-900 overflow-hidden">
+        <div class="container mx-auto px-6 mb-8 text-center">
+            <span class="text-gray-400 text-sm uppercase tracking-widest">我们驾驭的技术力量</span>
+        </div>
+        <!-- Simple infinite scroll effect simulated with flex wrap for static demo -->
+        <div class="flex flex-wrap justify-center gap-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+            <i class="fab fa-linux text-5xl text-white"></i>
+            <i class="fab fa-windows text-5xl text-blue-400"></i>
+            <i class="fas fa-server text-5xl text-gray-300"></i>
+            <i class="fab fa-aws text-5xl text-orange-400"></i>
+            <i class="fab fa-docker text-5xl text-blue-500"></i>
+            <i class="fab fa-python text-5xl text-yellow-300"></i>
+            <i class="fas fa-network-wired text-5xl text-purple-400"></i>
+            <i class="fas fa-database text-5xl text-green-400"></i>
+        </div>
+    </section>
+
+    <!-- 12. 为什么选择我们 (Advantages) -->
+    <section class="py-24 bg-brand-primary">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="fade-in-section">
+                    <h2 class="text-3xl font-bold text-white mb-6">长春本地化服务优势</h2>
+                    <p class="text-gray-400 mb-8">
+                        不同于远程服务商，大塘科技扎根长春高新区。我们熟悉本地网络环境（联通/电信/移动线路特性），能够提供最“接地气”的解决方案。
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-gray-800 flex items-center justify-center text-brand-highlight border border-gray-700">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-white font-bold">距离近，速度快</h4>
+                                <p class="text-gray-500 text-sm">长春市区内2小时必达现场。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-gray-800 flex items-center justify-center text-brand-highlight border border-gray-700">
+                                <i class="fas fa-users-cog"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-white font-bold">人员稳定</h4>
+                                <p class="text-gray-500 text-sm">自有全职技术团队，非临时工，技术文档有传承。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative h-80 md:h-auto rounded-2xl overflow-hidden fade-in-section">
+                    <img src="https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=800" class="absolute inset-0 w-full h-full object-cover" alt="Handshake">
+                    <div class="absolute inset-0 bg-brand-accent/20"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 13. 成功案例 (Case Study) -->
+    <section class="py-20 border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-end mb-12 fade-in-section">
+                <div>
+                    <h2 class="text-3xl font-bold text-white">近期成功案例</h2>
+                    <p class="text-gray-400 mt-2">Featured Project</p>
+                </div>
+                <a href="#contact" class="hidden md:block text-brand-accent hover:text-white transition-colors">更多案例 <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="bg-gray-800 rounded-2xl overflow-hidden grid md:grid-cols-2 shadow-2xl fade-in-section">
+                <div class="p-10 flex flex-col justify-center">
+                    <span class="text-brand-accent text-sm font-bold tracking-widest mb-2">制造行业</span>
+                    <h3 class="text-2xl font-bold text-white mb-4">某汽车零部件厂区无线全覆盖与内网改造</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        **挑战**：厂房面积大（2万平米），金属干扰严重，AGV小车频发断连。<br>
+                        **方案**：采用大塘科技工业级Wi-Fi 6方案，部署AC+AP架构，实施无缝漫游优化。<br>
+                        **成果**：网络延时降低至10ms以内，生产效率提升30%。
+                    </p>
+                    <div class="flex gap-4">
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-xs text-white">Wi-Fi 6</span>
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-xs text-white">VLAN划分</span>
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-xs text-white">网络安全</span>
+                    </div>
+                </div>
+                <div class="h-64 md:h-auto relative">
+                    <img src="https://images.pexels.com/photos/257700/pexels-photo-257700.jpeg?auto=compress&cs=tinysrgb&w=800" class="absolute inset-0 w-full h-full object-cover" alt="Factory Network">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 14. 客户评价 (Testimonials) -->
+    <section class="py-20 bg-brand-dark">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-white mb-16">客户的声音</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-brand-primary p-8 rounded-xl border border-gray-800 relative fade-in-section">
+                    <i class="fas fa-quote-left text-4xl text-gray-700 absolute top-4 left-4 opacity-50"></i>
+                    <p class="text-gray-300 italic mb-6 relative z-10">
+                        "大塘科技的响应速度真的很快。上次服务器半夜宕机，他们10分钟就介入处理好了，挽回了巨大的损失。专业的运维还是得交给专业的人。"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-gray-600 rounded-full flex items-center justify-center font-bold text-white">L</div>
+                        <div class="ml-3">
+                            <p class="text-white font-bold text-sm">李经理</p>
+                            <p class="text-gray-500 text-xs">某电商企业 IT负责人</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-brand-primary p-8 rounded-xl border border-gray-800 relative fade-in-section delay-100">
+                    <i class="fas fa-quote-left text-4xl text-gray-700 absolute top-4 left-4 opacity-50"></i>
+                    <p class="text-gray-300 italic mb-6 relative z-10">
+                        "他们不仅帮我们规划了网络，还很耐心地培训了我们的行政人员怎么处理简单故障。服务态度非常好，值得信赖的合作伙伴。"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-gray-600 rounded-full flex items-center justify-center font-bold text-white">W</div>
+                        <div class="ml-3">
+                            <p class="text-white font-bold text-sm">王总</p>
+                            <p class="text-gray-500 text-xs">某教育培训机构 校长</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-brand-primary p-8 rounded-xl border border-gray-800 relative fade-in-section delay-200">
+                    <i class="fas fa-quote-left text-4xl text-gray-700 absolute top-4 left-4 opacity-50"></i>
+                    <p class="text-gray-300 italic mb-6 relative z-10">
+                        "办公室搬迁到高新区，多亏了大塘团队，周末两天时间把所有工位网络、机房、电话全部搞定，周一上班完全没受影响。"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-gray-600 rounded-full flex items-center justify-center font-bold text-white">Z</div>
+                        <div class="ml-3">
+                            <p class="text-white font-bold text-sm">张主管</p>
+                            <p class="text-gray-500 text-xs">某设计公司 行政主管</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 15. FAQ (常见问题) -->
+    <section class="py-20">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="text-3xl font-bold text-center text-white mb-12">常见问题解答</h2>
+            <div class="space-y-4">
+                <details class="group bg-gray-800 rounded-lg p-4 cursor-pointer fade-in-section">
+                    <summary class="flex justify-between items-center font-medium text-white list-none">
+                        <span>你们提供上门维修服务吗？</span>
+                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="text-gray-400 mt-4 text-sm leading-relaxed">
+                        是的。对于长春市内的客户，我们提供快速上门服务。对于签约维保的客户，我们承诺SLA规定的响应时效。
+                    </p>
+                </details>
+                <details class="group bg-gray-800 rounded-lg p-4 cursor-pointer fade-in-section">
+                    <summary class="flex justify-between items-center font-medium text-white list-none">
+                        <span>除了网络维护，你们做电脑采购吗？</span>
+                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="text-gray-400 mt-4 text-sm leading-relaxed">
+                        我们主要专注技术服务，但可以为签约客户提供硬件选型建议和代采服务，确保您买到性价比最高且符合业务需求的设备。
+                    </p>
+                </details>
+                <details class="group bg-gray-800 rounded-lg p-4 cursor-pointer fade-in-section">
+                    <summary class="flex justify-between items-center font-medium text-white list-none">
+                        <span>如何保障我们的数据安全？</span>
+                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="text-gray-400 mt-4 text-sm leading-relaxed">
+                        我们有严格的保密协议。在技术上，我们通过防火墙策略、权限最小化原则以及加密备份来确保数据安全。
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- 16. CTA Banner -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <div class="bg-gradient-to-r from-brand-accent to-blue-600 rounded-2xl p-10 md:p-16 text-center shadow-2xl shadow-cyan-500/20 fade-in-section">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">您的网络是否需要一次全面体检？</h2>
+                <p class="text-blue-100 mb-8 max-w-2xl mx-auto">
+                    现在预约，即可获得一次免费的基础网络架构评估报告。发现潜在隐患，防患于未然。
+                </p>
+                <a href="#contact" class="inline-block bg-white text-blue-900 font-bold px-10 py-4 rounded-full hover:bg-gray-100 transition-colors shadow-lg">
+                    免费预约评估
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 17. 联系方式与地图 (Contact) -->
+    <section id="contact" class="py-24 bg-brand-dark border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16">
+                <!-- Info -->
+                <div class="fade-in-section">
+                    <h2 class="text-4xl font-bold text-white mb-8">联系我们</h2>
+                    <p class="text-gray-400 mb-10">
+                        无论您是想咨询运维方案，还是遇到紧急网络故障，欢迎随时联系大塘科技。
+                    </p>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-brand-accent text-xl shrink-0">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="ml-6">
+                                <h4 class="text-white font-bold mb-1">24小时服务热线</h4>
+                                <p class="text-gray-300 text-lg">178 0210 6965</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-brand-accent text-xl shrink-0">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="ml-6">
+                                <h4 class="text-white font-bold mb-1">电子邮箱</h4>
+                                <p class="text-gray-300">info@jilindatang.asia</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-brand-accent text-xl shrink-0">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="ml-6">
+                                <h4 class="text-white font-bold mb-1">公司地址</h4>
+                                <p class="text-gray-300 max-w-xs">
+                                    长春市高新开发区电台街611号<br>
+                                    宜家7080小区7【幢】-106号房
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div class="bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-700 fade-in-section">
+                    <form onsubmit="event.preventDefault(); alert('感谢您的留言，我们会尽快联系您！');" class="space-y-6">
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-2">您的姓名</label>
+                            <input type="text" class="w-full bg-brand-primary border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-accent transition-colors" placeholder="请输入姓名">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-2">联系电话</label>
+                            <input type="tel" class="w-full bg-brand-primary border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-accent transition-colors" placeholder="请输入手机号码">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-2">咨询内容</label>
+                            <select class="w-full bg-brand-primary border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-accent transition-colors">
+                                <option>网络故障报修</option>
+                                <option>企业运维外包咨询</option>
+                                <option>服务器/机房建设</option>
+                                <option>其他合作</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-2">详细描述</label>
+                            <textarea rows="4" class="w-full bg-brand-primary border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-accent transition-colors" placeholder="请简要描述您的需求..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-brand-accent text-brand-dark font-bold py-4 rounded-lg hover:bg-white transition-colors shadow-lg shadow-cyan-500/30">
+                            提交信息
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 18. 页脚 (Footer) -->
+    <footer class="bg-brand-dark border-t border-gray-800 pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-8 h-8 bg-brand-accent rounded flex items-center justify-center text-white font-bold">D</div>
+                        <span class="text-white font-bold text-xl">吉林大塘科技</span>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed max-w-sm mb-6">
+                        我们致力于通过卓越的网络运营技术，为企业构建稳定、高效、安全的数字基础设施。让连接创造价值。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-accent hover:text-white transition-colors"><i class="fab fa-weixin"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-accent hover:text-white transition-colors"><i class="fab fa-weibo"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-6">快速链接</h4>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li><a href="#home" class="hover:text-brand-accent transition-colors">首页</a></li>
+                        <li><a href="#services" class="hover:text-brand-accent transition-colors">服务项目</a></li>
+                        <li><a href="#solutions" class="hover:text-brand-accent transition-colors">解决方案</a></li>
+                        <li><a href="#about" class="hover:text-brand-accent transition-colors">关于我们</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-6">服务领域</h4>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li>IT 运维外包</li>
+                        <li>网络工程建设</li>
+                        <li>数据中心管理</li>
+                        <li>信息安全审计</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-600 text-sm">
+                    &copy; 2024 吉林省大塘网络科技有限公司 版权所有.
+                </p>
+                <p class="text-gray-700 text-xs mt-2 md:mt-0">
+                    Designed for Excellence in Network Operations.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        // 1. Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // 2. Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+                navbar.style.paddingTop = '10px';
+                navbar.style.paddingBottom = '10px';
+            } else {
+                navbar.classList.remove('shadow-lg');
+                navbar.style.paddingTop = '16px'; // 恢复原始 padding (py-4 = 1rem = 16px)
+                navbar.style.paddingBottom = '16px';
+            }
+        });
+
+        // 3. Intersection Observer for Fade-in Animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Stop observing once visible to perform animation only once
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // 4. Number Counter Animation
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.counter');
+                    counters.forEach(counter => {
+                        const target = +counter.getAttribute('data-target');
+                        const duration = 2000; // ms
+                        const increment = target / (duration / 16); // 60fps
+                        
+                        let current = 0;
+                        const updateCounter = () => {
+                            current += increment;
+                            if (current < target) {
+                                counter.innerText = Math.ceil(current);
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.innerText = target;
+                            }
+                        };
+                        updateCounter();
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Observe the stats section
+        const statsSection = document.querySelector('.counter')?.closest('section');
+        if(statsSection) counterObserver.observe(statsSection);
+
+    </script>
+</body>
+</html>
